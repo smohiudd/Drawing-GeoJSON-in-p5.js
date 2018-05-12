@@ -1,10 +1,9 @@
 let boundary;
-let bounds = {};
 let city_limit;
 let padding = 20;
 
 function preload() {
-	boundary = loadJSON("https://data.calgary.ca/resource/erra-cqp9.json");
+	boundary = loadJSON("https://data.calgary.ca/resource/erra-cqp9.json"); //data from City of Calgary Open Data
 }
 
 function setup() {
@@ -16,8 +15,10 @@ function setup() {
 
 }
 
-function getBoundingBox (boundary) {
+// getBoundingBox adapted from http://mikefowler.me/journal/2014/06/10/drawing-geojson-in-a-canvas
 
+function getBoundingBox (boundary) {
+	let bounds = {};
 	let coords,latitude, longitude;
   let data = boundary[0].the_geom.coordinates[0];
 
